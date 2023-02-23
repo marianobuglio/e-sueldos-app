@@ -1,0 +1,7 @@
+{
+  "name": "e-Sueldos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

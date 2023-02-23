@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+ <div class="centered-login">
+   <ion-img class="position-img" src="../../assets/images/logo-blanco.png" ></ion-img>
+   <ion-col size="12" size-sm="10" offset-sm="1" size-md="8" offset-md="2" size-lg="6" offset-lg="3" size-xl="4"
+     offset-xl="4">
+    
+     <ion-item fill="outline" class="ion-margin">
+       <ion-label position="floating">Email</ion-label>
+       <ion-input type="email" placeholder="Email" name="email" [(ngModel)]="credentials.email"></ion-input>
+     </ion-item>
+
+
+     <ion-item fill="outline" class="ion-margin">
+       <ion-label position="floating">Contraseña</ion-label>
+       <ion-input  type="password" placeholder="Password" name="password" [(ngModel)]="credentials.password"></ion-input>
+     </ion-item>
+
+
+     <ion-button (click)="login()" class="btn-ingresar" expand="block">Ingresar</ion-button>
+
+   </ion-col>
+ </div>
+
+</ion-content>

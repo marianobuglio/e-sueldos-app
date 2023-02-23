@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Tus Recibos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tus Recibos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="slides ion-margin-bottom">
+    <ion-datetime [(ngModel)]="mydate" (ionChange)="getRecibos()" presentation="month-year"></ion-datetime>
+  </div>
+
+  <div class="container">
+
+    <h2 *ngIf="mydate">{{mydate | date: 'MMMM'}}</h2>
+    <h2 *ngIf="!mydate">{{defaultDate | date: 'MMMM'}}</h2>
+    <ion-item lines="none" *ngFor="let recibo of recibos">
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="3">
+            <ion-button class="button-pdf" color="light" fill="clear" (click)="openPDF(recibo.pdf)">
+                <img class="icon-pdf" src="../../assets/icon/pdf.png" alt="">
+            </ion-button>
+          </ion-col>
+          <ion-col size="5">
+            <ion-label>
+							<h4>{{recibo.periodo | date : 'MM/yy'}}</h4>
+							<h6>{{recibo.tipoRecibo.descripcion}}</h6>
+						</ion-label>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button  *ngIf="!recibo.firmadoEmpleado.firmado" shape="round"  size="small" (click)="presentAlert(recibo)">Firmar</ion-button>
+            <ion-button *ngIf="recibo.firmadoEmpleado.firmado" color="success" shape="round"  size="small">Firmado</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+
+  </div>
+  <ion-img class="position-img" src="../../assets/images/logo-blanco.png" ></ion-img>
+
+  <!-- <ion-list lines="full">
+    <ion-item-group *ngFor="let anio of anios; let i = index">
+      <ion-item-divider>
+        <ion-label>{{anio}}</ion-label>
+      </ion-item-divider>
+      <ion-item *ngFor="let recibo of recibos[i]" (click)="navigate()">
+        <ion-label slot="start">{{recibo.periodo | date : 'MM/yy'}}</ion-label>
+        <ion-label slot="start">{{recibo.tipoRecibo.descripcion}}</ion-label>
+        <ion-icon slot="end" name="document-outline" (click)="openPDF(recibo.pdf)"></ion-icon>
+        <ion-icon [ngClass]="recibo.firmadoEmpleado.firmado ? 'color-icon' : '' " slot="end" name="checkmark-outline"></ion-icon>
+        <ion-icon (click)="presentAlert(recibo)" name="pencil-outline"></ion-icon>
+      </ion-item>
+    </ion-item-group>
+  </ion-list> -->
+</ion-content>

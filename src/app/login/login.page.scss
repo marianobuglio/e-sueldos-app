@@ -1,0 +1,21 @@
+ion-content {
+
+    --background: url('../../assets/images/fondo-register.jpg') no-repeat;
+}
+
+.btn-ingresar{
+    --background: #f94143;
+}
+
+.position-img{
+    position: absolute;
+    bottom: 1rem;
+    right: 7px;
+    width: 37%;
+  }
+
+  .centered-login{
+    height: 68vh;
+    display: flex;
+    align-items: center;
+  }
